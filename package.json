@@ -1,0 +1,51 @@
+{
+  "name": "@tboon0/postgres-readonly-mcp",
+  "version": "0.1.0",
+  "description": "Profile-based read-only PostgreSQL MCP server",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tboon0/postgres-readonly-mcp.git"
+  },
+  "bugs": "https://github.com/tboon0/postgres-readonly-mcp/issues",
+  "homepage": "https://github.com/tboon0/postgres-readonly-mcp#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "bin": {
+    "postgres-readonly-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist/*.js",
+    "dist/*.d.ts",
+    "README.md",
+    "LICENSE",
+    "SECURITY.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node --input-type=module -e \"import { rmSync } from 'node:fs'; rmSync('dist', { recursive: true, force: true });\" && tsc -p tsconfig.json",
+    "prepack": "npm run build",
+    "test:package": "node .github/scripts/test-package.mjs",
+    "start": "node dist/index.js",
+    "lint": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "pg": "^8.0.0",
+    "pg-query-stream": "^4.0.0",
+    "pgsql-parser": "^18.2.12",
+    "yaml": "^2.0.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/pg": "^8.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^5.0.5"
+  }
+}

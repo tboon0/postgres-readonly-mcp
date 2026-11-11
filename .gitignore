@@ -1,0 +1,11 @@
+node_modules/
+dist/
+profiles.yaml
+.env
+.env.*
+*.pem
+*.key
+coverage/
+*.tgz
+*.log
+.DS_Store
